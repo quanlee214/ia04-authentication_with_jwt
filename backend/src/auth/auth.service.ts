@@ -22,7 +22,7 @@ export class AuthService {
 
 		async generateTokens(user: any, isLogin = true) {
 			const payload = { sub: user.id, email: user.email };
-			const accessToken = this.jwtService.sign(payload, { expiresIn: '15m' });
+			const accessToken = this.jwtService.sign(payload, { expiresIn: '15s' });
 			if (isLogin) {
 				// Khi login, tạo refreshToken mới và lưu vào DB
 				const refreshToken = this.jwtService.sign(payload, { expiresIn: '7d' });
